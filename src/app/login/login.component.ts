@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   login(usern, pass) {
 
-    this.httpClientService.loginemp(new Employee(null, usern, pass, null)).subscribe(res => {
+    this.httpClientService.loginemp(new Employee(null, usern, pass, null, null)).subscribe(res => {
       this.employee = res;
       if (this.employee != null) {
         alert("Welcome " + this.employee.id);

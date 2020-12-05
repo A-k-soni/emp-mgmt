@@ -12,6 +12,7 @@ export class EmployeeComponent implements OnInit {
   employees: Employee[];
   name: string;
   password: string;
+  email: string;
   nameU: string;
   passwordU: string;
   idd: number;
@@ -44,7 +45,7 @@ export class EmployeeComponent implements OnInit {
   }
   upEmployee(idd, passwordU, nameU) {
 
-    this.httpClientService.updateEmp(new Employee(idd, nameU, passwordU, null)).
+    this.httpClientService.updateEmp(new Employee(idd, nameU, passwordU, null, null)).
       subscribe(res => {
         this.getAllEmployees();
         this.nameU = "";
@@ -65,13 +66,24 @@ export class EmployeeComponent implements OnInit {
   addEmployee() {
 
     this.httpClientService.createEmployee
-      (new Employee(null, this.name, this.password, null)).subscribe(res => {
+      (new Employee(null, this.name, this.password, this.email, null)).subscribe(res => {
         this.getAllEmployees();
         this.name = "";
         this.password = "";
+        this.email = "";
 
       }
       )
+  }
+
+  applyAttendance(employee: Employee) {
+
+    employee.attendance = !employee.attendance;
+
+  }
+
+  submitAttendance() {
+    this.httpClientService.submitAttendance(this.employees).subscribe(res => { })
   }
 
 }

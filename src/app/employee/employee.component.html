@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  <table class="table table-striped">
+  <table class="table ">
   <thead>
   <tr>
     <th>name</th>
@@ -7,17 +7,22 @@
     </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let employee of employees">
+      <tr *ngFor="let employee of employees"  [ngClass]="{'present': employee.attendance, 'absent': !employee.attendance}" (click)="applyAttendance(employee)">
           <td>{{employee.name}}</td>
           <td>{{employee.password}}</td>
+          <td>{{employee.email}}</td>
+ 
           <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td>
           <td><button class="btn btn-danger" (click)="updateEmployee(employee)"> Update Employee</button></td>  
+        
         </tr>
    </tbody>
   </table>
-
+  <button class="btn btn-danger" (click)="submitAttendance()"> Submit Attendance</button>
+  <br>
               <input type="text" [(ngModel)]="name">
               <input type="text" [(ngModel)]="password">
+              <input type="text" [(ngModel)]="email">
             <button type="submit" (click)="addEmployee()">Add</button>
              <br>
              <input type="text" [(ngModel)]="idd" disabled>

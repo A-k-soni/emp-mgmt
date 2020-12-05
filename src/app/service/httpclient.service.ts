@@ -6,7 +6,8 @@ export class Employee {
     public id: number,
     public name: string,
     public password: string,
-    public salary: string,
+    public email: string,
+    public attendance: boolean,
   ) { }
 
 
@@ -46,6 +47,11 @@ export class HttpClientService {
 
     return this.httpClient.post<Employee>("http://localhost:8080/user_login", employee);
 
+  }
+
+  submitAttendance(employees: Employee[]) {
+
+    return this.httpClient.post<Employee[]>("http://localhost:8080/attendance_submit", employees);
   }
 
 }
