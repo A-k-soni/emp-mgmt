@@ -1,0 +1,31 @@
+<div class="col-md-6">
+  <table class="table table-striped">
+  <thead>
+  <tr>
+    <th>name</th>
+    <th>designation</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let employee of employees">
+          <td>{{employee.name}}</td>
+          <td>{{employee.password}}</td>
+          <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td>
+          <td><button class="btn btn-danger" (click)="updateEmployee(employee)"> Update Employee</button></td>  
+        </tr>
+   </tbody>
+  </table>
+
+              <input type="text" [(ngModel)]="name">
+              <input type="text" [(ngModel)]="password">
+            <button type="submit" (click)="addEmployee()">Add</button>
+             <br>
+             <input type="text" [(ngModel)]="idd" disabled>
+            <input type="text" [(ngModel)]="nameU">
+            <input type="text" [(ngModel)]="passwordU">
+          <button type="submit" (click)="upEmployee(idd,passwordU,nameU)">Update</button>
+           
+
+          <app-login></app-login>
+
+    <app-student></app-student>
