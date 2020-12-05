@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   usern: string;
   pass: string;
 
-  employee: Employee[];
+  employee: Employee;
 
 
   constructor(private httpClientService: HttpClientService, private router: Router) { }
@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
 
     this.httpClientService.loginemp(new Employee(null, usern, pass, null)).subscribe(res => {
       this.employee = res;
-      if (this.employee[0] != null) {
-        alert("Welcome " + this.employee[0].id);
-        sessionStorage.setItem('name', this.employee[0].name);
+      if (this.employee != null) {
+        alert("Welcome " + this.employee.id);
+        sessionStorage.setItem('name', this.employee.name);
         this.router.navigate(['home']);
       } else {
         alert("WC");

@@ -44,7 +44,7 @@ export class HttpClientService {
 
   loginemp(employee) {
 
-    return this.httpClient.post<Employee[]>("http://localhost:8080/user_login", employee);
+    return this.httpClient.post<Employee>("http://localhost:8080/user_login", employee);
 
   }
 
